@@ -21,14 +21,24 @@ GitHub配布しやすいように、重みファイルは初回起動時に自�
 
 ## 起動
 
+このREADMEはリポジトリ直下で実行する前提です。
+
 ```bash
 git clone https://github.com/rumda500/Automatic-image-cropping-tool.git
-cd BiRefNet-WebUI
+cd Automatic-image-cropping-tool
 chmod +x run_ui.sh
 ./run_ui.sh
 ```
 
 起動後、ブラウザで `http://127.0.0.1:7860` を開いてください。
+
+### Windows の場合
+
+```bat
+git clone https://github.com/rumda500/Automatic-image-cropping-tool.git
+cd Automatic-image-cropping-tool
+run_ui.bat
+```
 
 ### 起動スクリプト
 
