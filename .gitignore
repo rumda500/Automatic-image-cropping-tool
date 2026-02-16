@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+
+# Local outputs
+outputs/
+*.log
+
+# Large model checkpoint (download at runtime)
+birefnet_finetuned_toonout.pth

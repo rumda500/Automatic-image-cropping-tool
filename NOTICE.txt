@@ -1,0 +1,21 @@
+BiRefNet-WebUI Distribution Notice
+=================================
+
+This distribution includes software based on BiRefNet and ToonOut.
+
+Upstream project:
+- Repository: https://github.com/MatteoKartoon/BiRefNet
+
+Copyright:
+- Original BiRefNet: Copyright (c) 2024 ZhengPeng
+- ToonOut modifications: Copyright (c) 2025 Matteo Muratori, Joël Seytre
+
+License:
+- MIT License (see LICENSE.BiRefNet-ToonOut)
+
+Local modifications in this distribution:
+- Added simplified Web UI launcher and packaging scripts
+- Added in-UI protection-mask canvas workflow
+- Added convenience launchers (.sh/.bat) and distribution docs
+
+No endorsement is implied by upstream authors.
