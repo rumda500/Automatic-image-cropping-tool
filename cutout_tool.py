@@ -129,6 +129,20 @@ def merge_protection(
     return merged
 
 
+def effective_input_alpha_protection(alpha_input: np.ndarray, enabled: bool) -> np.ndarray | None:
+    if not enabled:
+        return None
+    if alpha_input is None:
+        return None
+    if alpha_input.ndim != 2:
+        return None
+    # Fully opaque image (all 255) should not be treated as a protection mask,
+    # otherwise the prediction is forced to full opacity everywhere.
+    if np.min(alpha_input) == 255:
+        return None
+    return alpha_input.astype(np.uint8)
+
+
 def apply_alpha(pil_image: Image.Image, mask: np.ndarray, threshold: int) -> Image.Image:
     rgba = pil_image.convert("RGBA")
     rgba_arr = np.array(rgba)
@@ -230,7 +244,7 @@ def main():
         alpha_input = np.array(rgba_input, dtype=np.uint8)[..., 3]
 
         mask = infer_mask(model, pil_image, transform, device)
-        preserve_alpha = alpha_input if args.preserve_input_alpha else None
+        preserve_alpha = effective_input_alpha_protection(alpha_input, args.preserve_input_alpha)
 
         protect_file = resolve_protect_path(img_path, input_path, protect_path)
         user_protect = load_protection_mask(protect_file, pil_image.size) if protect_file else None

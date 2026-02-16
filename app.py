@@ -6,7 +6,14 @@ import gradio as gr
 import numpy as np
 from PIL import Image
 
-from cutout_tool import build_transform, infer_mask, load_model, merge_protection, resolve_device
+from cutout_tool import (
+    build_transform,
+    effective_input_alpha_protection,
+    infer_mask,
+    load_model,
+    merge_protection,
+    resolve_device,
+)
 
 
 def parse_args():
@@ -76,7 +83,7 @@ def main():
         mask = infer_mask(model, image_rgb, transform, device)
         user_protect = extract_mask_from_editor(protect_editor, image_rgb.size)
 
-        preserve_alpha = input_alpha if preserve_input_alpha else None
+        preserve_alpha = effective_input_alpha_protection(input_alpha, preserve_input_alpha)
         mask = merge_protection(mask, preserve_alpha_mask=preserve_alpha, user_protect_mask=user_protect)
 
         if threshold > 0:
