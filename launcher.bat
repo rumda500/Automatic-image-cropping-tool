@@ -6,12 +6,12 @@ cd /d "%~dp0"
 :menu
 echo.
 echo =========== BiRefNet-WebUI Launcher ===========
-echo   1^) Web UIを起動
-echo   2^) CLIヘルプを表示
-echo   q^) 終了
+echo   1^) Start Web UI
+echo   2^) Show CLI help
+echo   q^) Quit
 echo ===============================================
 echo.
-set /p CHOICE=選択してください: 
+set /p CHOICE=Select an option: 
 
 if /i "%CHOICE%"=="1" (
   call run_ui.bat
@@ -28,9 +28,9 @@ if /i "%CHOICE%"=="2" (
 )
 
 if /i "%CHOICE%"=="q" (
-  echo 終了します。
+  echo Exit.
   exit /b 0
 )
 
-echo [WARN] 無効な入力です: %CHOICE%
+echo [WARN] Invalid option: %CHOICE%
 goto menu

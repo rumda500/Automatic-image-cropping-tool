@@ -40,6 +40,8 @@ cd Automatic-image-cropping-tool
 run_ui.bat
 ```
 
+※ Windows `cmd.exe` 互換のため、`.bat` は英語メッセージ（ASCII）で実装しています。
+
 ### 起動スクリプト
 
 - Linux/macOS 直接起動: `run_ui.sh`
