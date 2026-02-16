@@ -94,14 +94,15 @@ def main():
             protect_editor = gr.ImageEditor(
                 type="pil",
                 image_mode="RGBA",
+                format="png",
                 label="保護マスクを描く(任意/白=保護)",
                 brush=gr.Brush(colors=["#ffffff"], default_color="#ffffff", color_mode="fixed"),
                 eraser=gr.Eraser(),
                 layers=True,
                 transforms=(),
             )
-            output_image = gr.Image(type="pil", label="透過結果 (RGBA)")
-        mask_image = gr.Image(type="pil", label="マスク (Gray)")
+            output_image = gr.Image(type="pil", format="png", label="透過結果 (RGBA)")
+        mask_image = gr.Image(type="pil", format="png", label="マスク (Gray)")
         threshold = gr.Slider(minimum=0, maximum=255, step=1, value=0, label="Alpha Threshold")
         preserve_input_alpha = gr.Checkbox(value=True, label="入力画像の既存アルファを保護")
         run_button = gr.Button("切り抜き実行")
